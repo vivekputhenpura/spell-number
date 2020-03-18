@@ -35,7 +35,7 @@ class SpellNumbers
             [7, 3]
           ]
         combinations = get_words(number)
-
+        # loop though the chunks and get the words for each chunk
         for model in combinationmodel
             comb_array = []
             start = 0;
@@ -54,9 +54,13 @@ class SpellNumbers
                 start = start + count
             end
 
-            comb_array
+            # create different combination of words from the array of words for each chunk
+            if comb_array.length > 0
+                tempCombinations = get_word_combinations(comb_array)        
+                combinations = combinations + tempCombinations            
+            end
         end    
-        return comb_array
+        return combinations
     end
 
     # Validate the input param
@@ -101,6 +105,26 @@ class SpellNumbers
         print pattern,"\n.....\n"
         
         words = $dictionary.grep(pattern)
+        return words
+    end
+
+    def get_word_combinations(array)    
+        words = []
+        word = ''
+        for first in array[0]
+          word = first      
+          for second in array[1]        
+            word2 = word + ", " + second
+            if array[2]
+              for third in array[2]            
+                word3 = word2 + ", " + third            
+                words << word3
+              end
+            else
+              words << word2
+            end
+          end
+        end
         return words
     end
 end
