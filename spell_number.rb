@@ -1,12 +1,17 @@
 # Converts 10 digit number to words
 class SpellNumbers
     # Public method to call the library method
-    # Accepts 10 digit number
-    # @param [String] number
+    # @param [String/Integer] number
     # @return [Array] on success
+    #   example: ["motortruck", "motor, truck"]
     # @return [Object] on failure
+    #   example: {
+    #       status: "error", 
+    #       code: "invalid number", 
+    #       message: "input should be # a 10 digit number and should not #       contain 0 or 1"
+    #   }
     def to_words(number)
-        words = convert(number) # call the original convert method
+        words = convert(number.to_s) # call the original convert method
 
         return words
     end
