@@ -8,7 +8,8 @@ class SpellNumbers
     #   example: {
     #       status: "error", 
     #       code: "invalid number", 
-    #       message: "input should be a 10 digit number and should not contain #       0 or 1"
+    #       message: "input should be a 10 digit number and should not contain 
+    #       0 or 1"
     #   }
     def to_words(number)
         words = convert(number.to_s) # call the original convert method
